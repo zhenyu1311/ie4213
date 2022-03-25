@@ -1,0 +1,35 @@
+% extends 'headerPage.html' %}
+
+{% block content%}
+
+    <h2>Predict HDB Price</h2>
+     {{a}}
+    <h3>Please enter details:</h3>
+    <br>
+    
+    <form method="post" enctype="multipart/form-data" action="predictHDB">
+    
+ {% csrf_token %}
+ <div class="col-md-4 col-sm-4"><label for="fname">Storey Range（XX TO XX):</label> </div> <input name="storey_rangev" type="text" value={{temp.storey_range}}><br><br>
+ <div class="col-md-4 col-sm-4"><label for="lname">Month(yyyy-mm):</label> </div> <input type="text" id="lname" name="monthv" value={{temp.month}}><br><br>
+ <div class="col-md-4 col-sm-4"><label for="fname">Flat Type:</label> </div> <input type="text" id="fname" name="flat_typev" value={{temp.flat_type}}><br><br>
+ <div class="col-md-4 col-sm-4"><label for="lname">floor area:</label> </div> <input type="text" id="lname" name="floor_area_sqmv" value={{temp.floor_area_sqm}}><br><br>
+ <div class="col-md-4 col-sm-4"><label for="fname">flat_model:</label></div>  <input type="text" id="fname" name="flat_modelv" value={{temp.flat_model}}><br><br>
+ <div class="col-md-4 col-sm-4"><label for="lname">remaining lease(XX years XX months):</label> </div> <input type="text" id="lname" name="remaining_leasev" value={{temp.remaining_lease}}><br><br>
+ <div class="col-md-4 col-sm-4"><label for="lname">block:</label> </div> <input type="text" id="lname" name="blockv" value={{temp.block}}><br><br>
+ <div class="col-md-4 col-sm-4"><label for="lname">street name(UPPERCASE):</label> </div> <input type="text" id="lname" name="street_namev" value={{temp.street_name}}><br><br>
+ <br>
+
+ {%  if scoreval  %}
+ <h1>The Price is {{scoreval}}</h1>
+ <input type="hidden" id="lname" name="HDBval" value={{scoreval}}>
+ <input type="submit" value="Submit" ></div>
+ {% else%}
+ <input type="submit" value="Submit" ></div>
+ {% endif %}
+
+</form>
+<br>
+
+
+{% endblock %}
